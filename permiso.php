@@ -23,6 +23,13 @@ class permiso
         
     }
 
+    public function listarpermiso(){
+        $oConexion=new conectar();
+        //Establece conexion con la base de datos.
+        $conexion=$oConexion->conexion();
+         
+    }
+
 
 }
 
