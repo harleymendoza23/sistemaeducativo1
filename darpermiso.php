@@ -6,6 +6,7 @@ require_once 'conexion.php';
 
 
 
+
 $orol= new rol();
 $orol->idRol=$_GET['idRol']; 
 $listarrol = $orol->consultarrol();
@@ -30,8 +31,7 @@ require 'head.php';
          <tr >
            <th>paginas con permiso</th>
          
-           
-           <!-- estos son los iconos<i class="fas fa-plus"></i> -->
+           <th><a href="/NOTASESTUDIANTE/agregarpermiso.php?idRol=<?php echo $_GET['idRol'];?>" class="btn btn-info" ><i class="fas fa-search-plus"></i> agregar permiso</a></th>
 
          
           </tr>
@@ -54,7 +54,7 @@ require 'head.php';
      $oconexion=new conectar();
      $oconexion=$oconexion->conexion();
      $opermiso=new permiso();
-     $consulta=$opermiso->listarpermiso($orol->idRol);
+     $consulta=$opermiso->listaPaginasConPermiso($orol->idRol);
      foreach ($consulta as $registro){
      
        
@@ -63,8 +63,10 @@ require 'head.php';
        <!-- en este codigo se trabaja html con php -->
        <tr class="table-primary">
          <td><?php echo $registro ['nombre'];?> </td>
-         <td><?php echo $registro ['correoElectronico'];?> </td>
-      
+        
+      <th>
+      <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-danger" onclick="eliminar(<?php echo $registro ['id']; ?>);" ><i class="fas fa-trash"></i> eliminar</a>
+      </th>
          
        </tr>
      <?php
@@ -76,7 +78,7 @@ require 'head.php';
 
                            
                           
-                           <a href="detallerol.php" class="btn btn-outline-info"><i class="fas fa-undo-alt"></i>volver</a>
+    <a href="detallerol.php" class="btn btn-outline-info"><i class="fas fa-undo-alt"></i>volver</a>
                           
                     
     </div>
@@ -84,3 +86,30 @@ require 'head.php';
 </body>
 </html>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">!!ELIMINAR!!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        esta seguro que quiere eliminar el permiso
+      </div>
+      <div class="modal-footer">
+        <form action="eliminarpermiso.php" method="get">
+        <input type="text" name="idRol" value="<?php echo $orol->idRol; ?>" style="display:none;">
+          <input type="" name="id" id="eliminar" style="display:none;" >
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancelar</button>
+        <button type="submit" class="btn btn-danger">eliminar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function eliminar(id){
+    document.getElementById('eliminar').value=id;
+  }
+</script>

@@ -22,7 +22,7 @@ $oUserController->verificarPermisoUrl($url);
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/NOTASESTUDIANTE/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="/NOTASESTUDIANTE/css/bootstrap.min.css" rel="stylesheet" >
     <link href="/NOTASESTUDIANTE/css/all.min.css" rel="stylesheet">
 
     

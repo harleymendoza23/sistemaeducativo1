@@ -78,7 +78,7 @@ require 'head.php';
 
                            
                           
-                           <a href="listarrol.php" class="btn btn-outline-info"><i class="fas fa-undo-alt"></i>volver</a>
+     <a href="listarrol.php" class="btn btn-outline-info"><i class="fas fa-undo-alt"></i>volver</a>
                           
                     
     </div>
